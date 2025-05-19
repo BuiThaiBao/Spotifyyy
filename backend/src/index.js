@@ -8,12 +8,18 @@ import adminRoutes from './routes/admin.route.js';
 import songRoutes from './routes/song.route.js';
 import albumRoutes from './routes/album.route.js';
 import statRoutes from './routes/stat.route.js';
+import { clerkMiddleware } from '@clerk/express'
 dotenv.config();
 
 
 const app = express();
 const PORT = process.env.PORT;
 app.use(express.json());// dunng de parse req.bopy
+app.use(clerkMiddleware({})); //add auth to req 
+
+
+
+
 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
