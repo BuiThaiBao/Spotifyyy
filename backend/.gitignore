@@ -1,0 +1,19 @@
+node_modules/
+.env
+.DS_Store
+*.log
+dist/
+build/
+.vscode/
+
+# IDE
+.idea/
+*.tmp
+# npm
+package-lock.json
+yarn.lock
+
+# Backend
+backend/node_modules/
+backend/dist/
+
