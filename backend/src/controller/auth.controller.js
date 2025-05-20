@@ -1,5 +1,5 @@
 import {User} from "../models/user.model.js";
-export const authCallback =  async(req, res) => {
+export const authCallback =  async(req, res,next) => {
     try {
         const {id,firstName,lastName , imageUrl} = req.body;
         const user = await User.findOne({cleakId: id});
@@ -17,9 +17,7 @@ export const authCallback =  async(req, res) => {
            success: true,
         });
     } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: "Server error",error,
-        });
+        console.error("Có lỗi khi xác thực người dùng:", error);
+        next(error);
     }
 }
