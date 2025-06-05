@@ -2,13 +2,13 @@ import {User} from "../models/user.model.js";
 export const authCallback =  async(req, res,next) => {
     try {
         const {id,firstName,lastName , imageUrl} = req.body;
-        const user = await User.findOne({cleakId: id});
+        const user = await User.findOne({clerkId: id});
 
         if(!user){
             //sign up
             await User.create({
-                cleakId: id,
-                firstName:` ${firstName}${lastName}`,
+                clerkId: id,
+                fullname: `${firstName} ${lastName}`,
                 imageUrl
             })
         }

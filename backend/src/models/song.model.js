@@ -24,7 +24,7 @@ const songSchema = new mongoose.Schema({
     albumId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Album",
-        required: true,
+        // required: true, // Bỏ required để seed dữ liệu
     },
 
 },{timestamps:true});

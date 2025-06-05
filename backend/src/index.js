@@ -5,6 +5,9 @@ import {connectDB} from './lib/db.js';
 import userRoutes from './routes/user.route.js';
 import fileUpload from 'express-fileupload';
 import path from 'path';
+import cors from 'cors';
+
+
 import authRoutes from './routes/auth.route.js';
 import adminRoutes from './routes/admin.route.js';
 import songRoutes from './routes/song.route.js';
@@ -17,6 +20,15 @@ dotenv.config();
 const app = express();
 const __dirname = path.resolve();
 const PORT = process.env.PORT;
+app.use(cors(
+  {
+    origin:'http://localhost:3000',
+    credentials: true, // Cho phép gửi cookie từ client
+  }
+));
+
+
+
 app.use(express.json());// dunng de parse req.bopy
 app.use(clerkMiddleware({})); //add auth to req 
 app.use(fileUpload({
@@ -46,3 +58,6 @@ app.listen(PORT, () => {
   console.log('Server is running on port' + PORT);
   connectDB();
 })
+//socket.io
+
+
